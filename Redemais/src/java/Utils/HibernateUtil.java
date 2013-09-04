@@ -1,11 +1,11 @@
 package Utils;
 
-import model.Bancos;
-import model.Cancelamento;
-import model.Cliente;
-import model.Empresa;
-import model.Usuario;
-import model.Venda;
+import Model.Bancos;
+import Model.Cancelamento;
+import Model.Cliente;
+import Model.Empresa;
+import Model.Usuario;
+import Model.Venda;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 
