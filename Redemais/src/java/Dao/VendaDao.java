@@ -11,7 +11,7 @@ public interface VendaDao {
 
     public void save(Venda venda);
 
-    public Venda getVenda(int idVenda);
+    public Venda getVenda(int id);
 
     public List<Venda> list();
 
