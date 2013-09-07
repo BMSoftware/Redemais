@@ -5,6 +5,8 @@ import Dao.VendaDaoImp;
 import Model.Venda;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -13,10 +15,13 @@ import javax.faces.model.ListDataModel;
  *
  * @author Bruno
  */
-@ManagedBean
-@SessionScoped
+@ManagedBean(name = "vendaController", eager = true)
+@RequestScoped
 public class VendaController {
 
+    @ManagedProperty(value = "#{cliente}")
+    private ClienteController clienteBean;
+    private String clienteNome;
     private Venda venda;
     private DataModel listaVendas;
 
