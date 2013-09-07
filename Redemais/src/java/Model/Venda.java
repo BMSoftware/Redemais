@@ -1,6 +1,8 @@
 package Model;
 // Generated 04/09/2013 00:26:25 by Hibernate Tools 3.2.1.GA
 
+import Dao.ClienteDao;
+import Dao.ClienteDaoImp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,9 +32,6 @@ public class Venda implements java.io.Serializable {
     @Column(name = "id_venda", unique = true, nullable = false)
     private Integer idVenda;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user", nullable = false)
-    private Usuario usuario;
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
     @Column(name = "valor", nullable = false, precision = 22, scale = 0)
@@ -47,12 +46,12 @@ public class Venda implements java.io.Serializable {
     private char status;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "venda")
     private List<Cancelamento> cancelamentos = new ArrayList<Cancelamento>();
+    private int idCliente;
 
     public Venda() {
     }
 
-    public Venda(Usuario usuario, Cliente cliente, double valor, Date dataVenda, Date hora, char status) {
-        this.usuario = usuario;
+    public Venda(Cliente cliente, double valor, Date dataVenda, Date hora, char status) {
         this.cliente = cliente;
         this.valor = valor;
         this.dataVenda = dataVenda;
@@ -60,16 +59,17 @@ public class Venda implements java.io.Serializable {
         this.status = status;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        ClienteDao dao = new ClienteDaoImp();
+        this.cliente = dao.getCliente(idCliente);
+    }
+
     public Integer getIdVenda() {
         return this.idVenda;
-    }
-
-    public Usuario getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Cliente getCliente() {

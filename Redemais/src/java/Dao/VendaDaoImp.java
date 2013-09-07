@@ -2,6 +2,7 @@ package Dao;
 
 import Model.Venda;
 import Utils.HibernateUtil;
+import java.sql.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,6 +17,9 @@ public class VendaDaoImp implements VendaDao {
     public void save(Venda venda) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
+        venda.setDataVenda(new Date(System.currentTimeMillis()));
+        venda.setHora(new Date(System.currentTimeMillis()));
+        venda.setStatus('A');
         session.save(venda);
         t.commit();
     }

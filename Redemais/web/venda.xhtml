@@ -9,7 +9,7 @@
     <h:body>
         <h1>Lançamentos de Venda</h1>
         <h:form>
-           
+            Cliente: <h:inputText value="#{vendaController.venda.idCliente}"/>
             Valor: <h:inputText value="#{vendaController.venda.valor}" requiredMessage="Favor preencher o campo [Valor]"/><br/>
             <h:commandButton action="#{vendaController.adicionarVenda}" value="Gravar"/>
             <br/>

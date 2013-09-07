@@ -28,9 +28,6 @@ public class Cancelamento implements java.io.Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_venda", nullable = false)
     private Venda venda;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user", nullable = false)
-    private Usuario usuario;
     @Temporal(TemporalType.TIME)
     @Column(name = "hora", nullable = false, length = 8)
     private Date hora;
@@ -43,9 +40,8 @@ public class Cancelamento implements java.io.Serializable {
     public Cancelamento() {
     }
 
-    public Cancelamento(Venda venda, Usuario usuario, Date hora, Date dataCancelamento, String motivo) {
+    public Cancelamento(Venda venda, Date hora, Date dataCancelamento, String motivo) {
         this.venda = venda;
-        this.usuario = usuario;
         this.hora = hora;
         this.dataCancelamento = dataCancelamento;
         this.motivo = motivo;
@@ -61,14 +57,6 @@ public class Cancelamento implements java.io.Serializable {
 
     public void setVenda(Venda venda) {
         this.venda = venda;
-    }
-
-    public Usuario getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Date getHora() {
