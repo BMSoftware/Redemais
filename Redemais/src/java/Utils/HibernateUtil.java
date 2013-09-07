@@ -4,7 +4,6 @@ import Model.Bancos;
 import Model.Cancelamento;
 import Model.Cliente;
 import Model.Empresa;
-import Model.Usuario;
 import Model.Venda;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
@@ -30,7 +29,6 @@ public class HibernateUtil {
                 ac.addAnnotatedClass(Cancelamento.class);
                 ac.addAnnotatedClass(Cliente.class);
                 ac.addAnnotatedClass(Empresa.class);
-                ac.addAnnotatedClass(Usuario.class);
                 ac.addAnnotatedClass(Venda.class);
                 sessionFactory = ac.configure().buildSessionFactory();
             } catch (Throwable ex) {

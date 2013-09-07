@@ -55,8 +55,6 @@ public class Empresa implements java.io.Serializable {
     @Column(name = "e-mail", length = 45)
     private String EMail;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
     private List<Cliente> clientes = new ArrayList<Cliente>();
 
     public Empresa() {
@@ -202,14 +200,6 @@ public class Empresa implements java.io.Serializable {
 
     public void setEMail(String EMail) {
         this.EMail = EMail;
-    }
-
-    public List<Usuario> getUsuarios() {
-        return this.usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
     }
 
     public List<Cliente> getClientes() {

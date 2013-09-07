@@ -21,9 +21,9 @@ public class ClienteDaoImp implements ClienteDao {
     }
 
     @Override
-    public Cliente getCliente(long id) {
+    public Cliente getCliente(int idCliente) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return (Cliente) session.load(Cliente.class, id);
+        return (Cliente) session.load(Cliente.class, idCliente);
 
     }
 
