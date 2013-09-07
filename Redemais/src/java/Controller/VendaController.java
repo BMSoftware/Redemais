@@ -2,7 +2,9 @@ package Controller;
 
 import Dao.VendaDao;
 import Dao.VendaDaoImp;
+import Model.Cliente;
 import Model.Venda;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -16,11 +18,11 @@ import javax.faces.model.ListDataModel;
  */
 @ManagedBean(name = "vendaController", eager = true)
 @SessionScoped
-public class VendaController {
+public class VendaController implements Serializable {
 
     @ManagedProperty(value = "#{cliente}")
     private ClienteController clienteBean;
-    private String clienteNome;
+    private Cliente cliente;
     private Venda venda;
     private DataModel listaVendas;
 
@@ -28,6 +30,15 @@ public class VendaController {
         List<Venda> lista = new VendaDaoImp().list();
         listaVendas = new ListDataModel(lista);
         return listaVendas;
+    }
+
+    public Cliente getCliente() {
+        
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Venda getVenda() {
