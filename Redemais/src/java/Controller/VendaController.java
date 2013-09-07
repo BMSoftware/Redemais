@@ -20,7 +20,7 @@ import javax.faces.model.ListDataModel;
 @SessionScoped
 public class VendaController implements Serializable {
 
-//    @ManagedProperty(value = "#{cliente}")
+    @ManagedProperty(value = "#{cliente}")
     private ClienteController clienteBean;
     private Cliente cliente;
     private Venda venda;
@@ -73,18 +73,18 @@ public class VendaController implements Serializable {
         Venda vendaTemp = (Venda) (listaVendas.getRowData());
         VendaDao dao = new VendaDaoImp();
         dao.remove(vendaTemp);
-        return "index";
+        return "venda";
     }
 
     public String adicionarVenda() {
         VendaDao dao = new VendaDaoImp();
         dao.save(venda);
-        return "index";
+        return "venda";
     }
 
     public String alterarVenda() {
         VendaDao dao = new VendaDaoImp();
         dao.update(venda);
-        return "index";
+        return "venda";
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public interface ClienteDao {
     
 public void save(Cliente cliente);
-public Cliente getCliente(long id);
+public Cliente getCliente(int idCliente);
 public List<Cliente> list();
 public void remove(Cliente cliente);
 public void update(Cliente cliente);

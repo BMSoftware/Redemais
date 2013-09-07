@@ -76,9 +76,8 @@ public class Venda implements java.io.Serializable {
         return this.cliente;
     }
 
-    public void setCliente(int idCliente) {
-        ClienteDao dao = new ClienteDaoImp();
-        this.cliente = dao.getCliente(idCliente);
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public double getValor() {
