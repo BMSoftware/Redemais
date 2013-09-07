@@ -18,7 +18,7 @@ import javax.faces.model.ListDataModel;
 @SessionScoped
 public class VendaController {
 
-    @ManagedProperty(value = "#{cliente}")
+//    @ManagedProperty(value = "#{cliente}")
     private ClienteController clienteBean;
     private String clienteNome;
     private Venda venda;
