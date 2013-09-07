@@ -32,8 +32,18 @@ public class VendaController implements Serializable {
         return listaVendas;
     }
 
+    public ClienteController getClienteBean() {
+        return clienteBean;
+    }
+
+    public void setClienteBean(ClienteController clienteBean) {
+        this.clienteBean = clienteBean;
+    }
+
     public Cliente getCliente() {
-        
+        if (clienteBean != null) {
+            cliente = clienteBean.getCliente();
+        }
         return cliente;
     }
 
