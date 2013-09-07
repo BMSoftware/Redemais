@@ -36,12 +36,12 @@ public class VendaController {
 
     public String prepararAdicionarVenda() {
         venda = new Venda();
-        return "gerenciarVenda";
+        return "venda";
     }
 
     public String prepararAlteraVenda() {
         venda = (Venda) (listaVendas.getRowData());
-        return "gerenciarVenda";
+        return "venda";
     }
 
     public String excluirVenda() {

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Lançamento de Vendas</title>
+    </h:head>
+    <h:body>
+        <h1>Lançamentos de Venda</h1>
+        <h:form>
+            <!-- Cliente: <h:inputText value="#{vendaController.venda.cliente.idCliente}"/><br/> Fodeo, rs -->
+            Valor: <h:inputText value="#{vendaController.venda.valor}"/><br/>
+            
+            <h:commandButton action="#{vendaController.adicionarVenda}" value="Gravar"/>
+            <br/>
+            <h:commandLink action="index" value="Voltar"/>
+        </h:form>
+    </h:body>
+</html>
+
