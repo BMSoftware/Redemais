@@ -6,7 +6,6 @@ import Model.Venda;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -16,7 +15,7 @@ import javax.faces.model.ListDataModel;
  * @author Bruno
  */
 @ManagedBean(name = "vendaController", eager = true)
-@RequestScoped
+@SessionScoped
 public class VendaController {
 
     @ManagedProperty(value = "#{cliente}")

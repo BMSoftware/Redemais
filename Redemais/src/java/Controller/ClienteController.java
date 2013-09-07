@@ -3,7 +3,6 @@ package Controller;
 import Dao.ClienteDaoImp;
 import Model.Cliente;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -11,7 +10,7 @@ import javax.faces.bean.SessionScoped;
  * @author Bruno
  */
 @ManagedBean(name = "cliente", eager = true)
-@RequestScoped
+@SessionScoped
 public class ClienteController {
 
     private String clienteNome;
