@@ -1,6 +1,7 @@
 package Dao;
 
 import Model.Cliente;
+import java.util.List;
 
 /**
  *
@@ -8,5 +9,9 @@ import Model.Cliente;
  */
 public interface ClienteDao {
     
-    public Cliente getCliente(int idCliente);
+public void save(Cliente cliente);
+public Cliente getCliente(long id);
+public List<Cliente> list();
+public void remove(Cliente cliente);
+public void update(Cliente cliente);
 }

@@ -2,7 +2,9 @@ package Dao;
 
 import Model.Cliente;
 import Utils.HibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -11,8 +13,43 @@ import org.hibernate.Session;
 public class ClienteDaoImp implements ClienteDao {
 
     @Override
-    public Cliente getCliente(int idCliente) {
+    public void save(Cliente cliente) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return (Cliente) session.load(Cliente.class, idCliente);
+        Transaction t = session.beginTransaction();
+        session.save(cliente);
+        t.commit();
+    }
+
+    @Override
+    public Cliente getCliente(long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        return (Cliente) session.load(Cliente.class, id);
+
+    }
+
+    @Override
+    public List<Cliente> list() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        List lista = session.createQuery("from Cliente").list();
+        t.commit();
+        return lista;
+    }
+
+    @Override
+    public void remove(Cliente cliente) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        session.delete(cliente);
+        t.commit();
+    }
+
+    @Override
+    public void update(Cliente cliente) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        session.update(cliente);
+        t.commit();
+
     }
 }
