@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Bruno
  */
-@ManagedBean(name = "cliente", eager = true)
+@ManagedBean(name = "clienteController", eager = true)
 @SessionScoped
 public class ClienteController implements Serializable{
 
