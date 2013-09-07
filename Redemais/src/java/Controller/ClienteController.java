@@ -1,7 +1,7 @@
 package Controller;
 
-import Dao.ClienteDaoImp;
 import Model.Cliente;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -11,17 +11,17 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "cliente", eager = true)
 @SessionScoped
-public class ClienteController {
+public class ClienteController implements Serializable{
 
-    private String clienteNome;
+    private Cliente cliente;
 
-    public String getClienteNome() {
-        Cliente cliente = new ClienteDaoImp().getCliente(1);
-        clienteNome = cliente.getNome();
-        return clienteNome;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClienteNome(String clienteNome) {
-        this.clienteNome = clienteNome;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
+    
+    
 }
