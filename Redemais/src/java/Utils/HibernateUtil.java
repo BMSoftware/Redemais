@@ -1,6 +1,5 @@
 package Utils;
 
-import Model.Bancos;
 import Model.Cancelamento;
 import Model.Cliente;
 import Model.Empresa;
@@ -25,7 +24,6 @@ public class HibernateUtil {
         if (sessionFactory == null) {
             try {
                 AnnotationConfiguration ac = new AnnotationConfiguration();
-                ac.addAnnotatedClass(Bancos.class);
                 ac.addAnnotatedClass(Cancelamento.class);
                 ac.addAnnotatedClass(Cliente.class);
                 ac.addAnnotatedClass(Empresa.class);

@@ -31,9 +31,8 @@ public class Cliente implements java.io.Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "padrinho", nullable = false)
     private Empresa empresa;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pag_banco", nullable = false)
-    private Bancos bancos;
+    @Column(name = "pag_banco", nullable = false)
+    private int pagBanco;
     @Column(name = "cpf", unique = true, nullable = false, length = 11)
     private String cpf;
     @Column(name = "rg", nullable = false, length = 20)
@@ -80,9 +79,9 @@ public class Cliente implements java.io.Serializable {
     public Cliente() {
     }
 
-    public Cliente(Empresa empresa, Bancos bancos, String cpf, String rg, String nome, String foneResDdd, String foneRes, String foneCelDdd, String foneCel, String endRua, String endNumero, String endComplemento, String endCidade, String endEstado, String email, String pagTipoConta, String pagAgencia, String pagDigAgencia, String pagConta, String pagDigConta, String pagCidadeAgencia, char statusCartao) {
+    public Cliente(Empresa empresa, int pagBanco, String cpf, String rg, String nome, String foneResDdd, String foneRes, String foneCelDdd, String foneCel, String endRua, String endNumero, String endComplemento, String endCidade, String endEstado, String email, String pagTipoConta, String pagAgencia, String pagDigAgencia, String pagConta, String pagDigConta, String pagCidadeAgencia, char statusCartao) {
         this.empresa = empresa;
-        this.bancos = bancos;
+        this.pagBanco = pagBanco;
         this.cpf = cpf;
         this.rg = rg;
         this.nome = nome;
@@ -117,12 +116,12 @@ public class Cliente implements java.io.Serializable {
         this.empresa = empresa;
     }
 
-    public Bancos getBancos() {
-        return this.bancos;
+    public int getPagBancos() {
+        return this.pagBanco;
     }
 
-    public void setBancos(Bancos bancos) {
-        this.bancos = bancos;
+    public void setPagBancos(int pagBanco) {
+        this.pagBanco = pagBanco;
     }
 
     public String getCpf() {
