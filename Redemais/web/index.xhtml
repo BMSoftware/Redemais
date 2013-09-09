@@ -9,12 +9,11 @@
         <h1>Hello from Facelets</h1>
         <h:form>
             <h:commandButton value="Nova Venda" action="#{vendaController.prepararAdicionarVenda()}" />
-            
+            <br/>
+            <h:commandButton value="Novo Cliente" action="#{clienteController.prepararAdicionarCliente}"/>
+            <br/>
+            <h:commandButton value="Listar Lançamentos do Dia" action="listarVenda"/>
         </h:form>
-        
-        <h:form>
-<h:commandButton value="Novo Cliente" action="#{clienteController.prepararAdicionarCliente}"/>
-</h:form>
     </h:body>
 </html>
 
