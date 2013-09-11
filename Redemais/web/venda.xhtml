@@ -2,16 +2,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.prime.com.tr/ui">
     <h:head>
         <title>Lançamento de Vendas</title>
         <link type="text/css" rel="stylesheet" href="dot-luv/skin.css"/>
     </h:head>
     <h:body>
         <p:layout fullPage="true">
-            <p:layoutUnit position="left" style="max-width: 200px; min-width: 50px; width: 100px" size="100" minSize="50" maxSize="200" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
+            <p:layoutUnit position="left" width="200" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
                 <h:form prependId="false">
-                   
+                    <h:commandButton action="index" value="Home"/>
+                    <h:commandButton action="#{vendaController.prepararAdicionarVenda()}" value="Lançar Venda"/>
+                    <h:commandButton action="#{clienteController.prepararAdicionarCliente}" value="Cadastrar Cliente"/>
+                    <h:commandButton action="listarVenda" value="Listar / Cancelar Vendas"/>
                 </h:form>
             </p:layoutUnit>
             <p:layoutUnit position="center" resizable="true">
@@ -20,9 +23,8 @@
                     <br/>
                     Cliente: <h:inputText value="#{vendaController.venda.idCliente}"/>
                     Valor: <h:inputText value="#{vendaController.venda.valor}" requiredMessage="Favor preencher o campo [Valor]"/><br/>
-                    <p:commandButton action="#{vendaController.adicionarVenda}" value="Gravar"/>
+                    <h:commandButton action="#{vendaController.adicionarVenda}" value="Gravar"/>
                     <br/>
-                    <h:commandLink action="index" value="Voltar"/>
                 </h:form>
             </p:layoutUnit>
         </p:layout>

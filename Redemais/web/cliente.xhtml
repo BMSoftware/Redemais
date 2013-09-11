@@ -2,51 +2,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
     <h:head>
         <title>Adicionar Cliente</title>
+        <link type="text/css" rel="stylesheet" href="dot-luv/skin.css"/>
     </h:head>
     <h:body>
-        <h:form>
-            <br/>
-            Dados Cadastrais do Cliente:<br/>
-            Nome: <h:inputText value="#{clienteController.cliente.nome}"/><br/>
-            CPF: <h:inputText value="#{clienteController.cliente.cpf}"/><br/>
-            RG: <h:inputText value="#{clienteController.cliente.rg}"/> <br/>
-            Data de Nascimento: (Not found)<br/>
-            Sexo: (Not found)<br/><br/>
-
-            Endereço e Contato:<br/>
-            Rua: <h:inputText value="#{clienteController.cliente.endRua}"/><br/>
-            Nº: <h:inputText value="#{clienteController.cliente.endNumero}"/><br/>
-            Complemento: <h:inputText value="#{clienteController.cliente.endComplemento}"/><br/>
-            Bairro: (Not found)<br/>
-            Cidade: <h:inputText value="#{clienteController.cliente.endCidade}"/><br/>
-            Telefone fixo: <h:inputText size="1" value="#{clienteController.cliente.foneResDdd}"/> <h:inputText value="#{clienteController.cliente.foneRes}"/><br/>
-            Telefone celular: <h:inputText size="1" value="#{clienteController.cliente.foneCelDdd}"/> <h:inputText value="#{clienteController.cliente.foneCel}"/><br/>
-            E-mail: <h:inputText size="30" value="#{clienteController.cliente.email}"/><br/>
-            <br/>
-
-            Dados Bancários:<br/>
-            Banco: (Implementar código direto com lista bancos)<br/>
-            Número da Agência: <h:inputText value="#{clienteController.cliente.pagAgencia}"/> - <h:inputText value="#{clienteController.cliente.pagDigAgencia}"/><br/> 
-            Número da Conta: <h:inputText value="#{clienteController.cliente.pagConta}"/> - <h:inputText value="#{clienteController.cliente.pagDigConta}"/><br/>
-            Tipo de Conta: <h:selectOneMenu value="#{clienteController.cliente.pagTipoConta}">
-                <f:selectItem itemLabel="Conta Corrente" itemValue="Conta Corrente"/>
-                <f:selectItem itemLabel="Conta Poupança" itemValue="Conta Poupança"/>
-            </h:selectOneMenu><br/>
-            Município da Agência: <h:inputText value="#{clienteController.cliente.pagCidadeAgencia}"/><br/><br/>
-
-            Patrocinador/Indicador: (Direto do user)
-
-            <br/><br/>
-
-            <h:commandButton action="#{clienteController.adicionarCliente()}" value="Inserir Cliente"/><br/>
-
-
-            <h:commandButton action="index" value="Voltar"/>
-
-        </h:form>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="left" width="200" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
+                <h:form prependId="false">
+                     <h:commandButton action="index" value="Home"/>
+                    <h:commandButton action="#{vendaController.prepararAdicionarVenda()}" value="Lançar Venda"/>
+                    <h:commandButton action="#{clienteController.prepararAdicionarCliente}" value="Cadastrar Cliente"/>
+                    <h:commandButton action="listarVenda" value="Listar / Cancelar Vendas"/>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="center" resizable="true">
+                 <h1>Cadastrar Cliente</h1>
+                <h:form>
+                    <br/>
+                    Dados Cadastrais do Cliente:<br/>
+                    Nome: <h:inputText value="#{clienteController.cliente.nome}"/><br/>
+                    CPF: <h:inputText value="#{clienteController.cliente.cpf}"/><br/>
+                    RG: <h:inputText value="#{clienteController.cliente.rg}"/> <br/>
+                    Data de Nascimento: (Not found)<br/>
+                    Sexo: (Not found)<br/><br/>
+                    Endereço e Contato:<br/>
+                    Rua: <h:inputText value="#{clienteController.cliente.endRua}"/><br/>
+                    Nº: <h:inputText value="#{clienteController.cliente.endNumero}"/><br/>
+                    Complemento: <h:inputText value="#{clienteController.cliente.endComplemento}"/><br/>
+                    Bairro: (Not found)<br/>
+                    Cidade: <h:inputText value="#{clienteController.cliente.endCidade}"/><br/>
+                    Telefone fixo: <h:inputText size="1" value="#{clienteController.cliente.foneResDdd}"/> <h:inputText value="#{clienteController.cliente.foneRes}"/><br/>
+                    Telefone celular: <h:inputText size="1" value="#{clienteController.cliente.foneCelDdd}"/> <h:inputText value="#{clienteController.cliente.foneCel}"/><br/>
+                    E-mail: <h:inputText size="30" value="#{clienteController.cliente.email}"/><br/>
+                    <br/>
+                    Dados Bancários:<br/>
+                    Banco: (Implementar código direto com lista bancos)<br/>
+                    Número da Agência: <h:inputText value="#{clienteController.cliente.pagAgencia}"/> - <h:inputText value="#{clienteController.cliente.pagDigAgencia}"/><br/> 
+                    Número da Conta: <h:inputText value="#{clienteController.cliente.pagConta}"/> - <h:inputText value="#{clienteController.cliente.pagDigConta}"/><br/>
+                    Tipo de Conta: <h:selectOneMenu value="#{clienteController.cliente.pagTipoConta}">
+                        <f:selectItem itemLabel="Conta Corrente" itemValue="Conta Corrente"/>
+                        <f:selectItem itemLabel="Conta Poupança" itemValue="Conta Poupança"/>
+                    </h:selectOneMenu><br/>
+                    Município da Agência: <h:inputText value="#{clienteController.cliente.pagCidadeAgencia}"/><br/><br/>
+                    Patrocinador/Indicador: (Direto do user)
+                    <br/><br/>
+                    <h:commandButton action="#{clienteController.adicionarCliente()}" value="Inserir Cliente"/><br/>
+                    <h:commandButton action="index" value="Voltar"/>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
     </h:body>
 </html>
 

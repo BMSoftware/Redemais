@@ -2,23 +2,64 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.prime.com.tr/ui">
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Vendas do Dia</title>
         <link type="text/css" rel="stylesheet" href="dot-luv/skin.css"/>
     </h:head>
     <h:body>
         <p:layout fullPage="true">
-            <p:layoutUnit position="left" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
+            <p:layoutUnit position="left" width="200" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
                 <h:form prependId="false">
-                    <!--<p:commandLink value="Lançar Venda" actionListener="#{vendaController.prepararAdicionarVenda()}" update="infosVenda" oncomplete="dialogGerVenda.show()"/>-->
+                    <h:commandButton action="index" value="Home"/>
+                    <h:commandButton action="#{vendaController.prepararAdicionarVenda()}" value="Lançar Venda"/>
+                    <h:commandButton action="#{clienteController.prepararAdicionarCliente}" value="Cadastrar Cliente"/>
+                    <h:commandButton action="listarVenda" value="Listar / Cancelar Vendas"/>
                 </h:form>
             </p:layoutUnit>
-            <p:layoutUnit position="center">
-                <h1>Vendas do Dia</h1>
+            <p:layoutUnit position="center" resizable="true">
+                <h1>Vendas Diaria</h1>
                 <br/>
                 <h:form prependId="false">
-                    
+                    <p:dataTable id="tabela" var="livro" value="#{vendaController.listarVendas}">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cartão"/>
+                            </f:facet>
+                            <h:outputText value="#{vendaController.venda.cliente.idCliente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nome"/>
+                            </f:facet>
+                            <h:outputText value="#{vendaController.venda.cliente.idCliente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="CPF"/>
+                            </f:facet>
+                            <h:outputText value="#{vendaController.venda.cliente.cpf}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="valor"/>
+                            </f:facet>
+                            <h:outputText value="#{vendaController.venda.valor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Alterar"/>
+                            </f:facet>
+                            <p:commandButton actionListener="#{vendaController.prepararAlteraVenda}" value="Alterar"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Excluir"/>
+                            </f:facet>
+                            <p:commandButton actionListener="#{vendaController.excluirVenda()}" value="Excluir"/>
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
             </p:layoutUnit>
         </p:layout>
