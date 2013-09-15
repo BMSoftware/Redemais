@@ -64,7 +64,7 @@ public class VendaController implements Serializable {
         return "venda";
     }
 
-    public String prepararAlteraVenda() {
+    public String prepararAlterarVenda() {
         venda = (Venda) (listaVendas.getRowData());
         return "venda";
     }

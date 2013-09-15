@@ -49,7 +49,7 @@ public class VendaDaoImp implements VendaDao {
 
     @Override
     public void update(Venda venda) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
         session.update(venda);
         t.commit();

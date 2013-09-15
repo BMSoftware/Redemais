@@ -13,7 +13,7 @@
             <p:layoutUnit position="left" width="200" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
                 <h:form prependId="false">
                     <h:commandButton action="index" value="Home"/>
-                    <h:commandButton action="#{vendaController.prepararAdicionarVenda()}" value="Lançar Venda"/>
+                    <h:commandButton action="#{vendaController.prepararAdicionarVenda}" value="Lançar Venda"/>
                     <h:commandButton action="#{clienteController.prepararAdicionarCliente}" value="Cadastrar Cliente"/>
                     <h:commandButton action="listarVenda" value="Listar / Cancelar Vendas"/>
                 </h:form>
@@ -22,47 +22,60 @@
                 <h1>Vendas Diaria</h1>
                 <br/>
                 <h:form prependId="false">
-                    <p:dataTable id="tabela" var="livro" value="#{vendaController.listarVendas}">
+                    <p:dataTable id="tabela" var="venda" value="#{vendaController.listarVendas}">
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Cartão"/>
                             </f:facet>
-                            <h:outputText value="#{vendaController.venda.cliente.idCliente}"/>
+                            <h:outputText value="#{venda.cliente.idCliente}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Nome"/>
                             </f:facet>
-                            <h:outputText value="#{vendaController.venda.cliente.idCliente}"/>
+                            <h:outputText value="#{venda.cliente.nome}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="CPF"/>
                             </f:facet>
-                            <h:outputText value="#{vendaController.venda.cliente.cpf}"/>
+                            <h:outputText value="#{venda.cliente.cpf}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="valor"/>
                             </f:facet>
-                            <h:outputText value="#{vendaController.venda.valor}"/>
+                            <h:outputText value="#{venda.valor}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Alterar"/>
                             </f:facet>
-                            <p:commandButton actionListener="#{vendaController.prepararAlteraVenda}" value="Alterar"/>
+                            <p:commandButton actionListener="#{vendaController.prepararAlterarVenda}" value="Alterar" update="infosVenda" oncomplete="dialogGerVenda.show()"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Excluir"/>
                             </f:facet>
-                            <p:commandButton actionListener="#{vendaController.excluirVenda()}" value="Excluir"/>
+                            <p:commandButton actionListener="#{vendaController.excluirVenda}" value="Excluir"/>
                         </p:column>
                     </p:dataTable>
                 </h:form>
             </p:layoutUnit>
         </p:layout>
+
+        <p:dialog header="Gerencia de Venda" widgetVar="dialogGerVenda"  resizable="false" modal="true" showEffect="slide" width="500">
+            <h:form prependId="false">
+                <h:panelGrid id="infosVenda" columns="2" style="margin-bottom:10px">
+                    <h:outputLabel for="valor" value="Valor:" />
+                    <h:inputText id="valor" value="#{vendaController.venda.valor}"/>
+                    <h:outputLabel for="cliente" value="Cliente: " />
+                    <h:inputText id="cliente" value="#{vendaController.venda.idCliente}"/>
+                    <p:commandButton update="tabela" oncomplete="dialogGerVenda.hide();" actionListener="#{vendaController.alterarVenda}" value="Alterar Lançamento"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+
     </h:body>
 </html>
 
