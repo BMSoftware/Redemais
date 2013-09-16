@@ -58,6 +58,7 @@ public class Venda implements java.io.Serializable {
         this.status = status;
     }
 
+
     public int getIdCliente() {
         return idCliente;
     }
@@ -65,6 +66,7 @@ public class Venda implements java.io.Serializable {
     public void setIdCliente(int idCliente) {
         ClienteDao dao = new ClienteDaoImp();
         this.cliente = dao.getCliente(idCliente);
+        this.idCliente = idCliente;
     }
 
     public Integer getIdVenda() {

@@ -1,5 +1,7 @@
 package Model;
 
+import Dao.EmpresaDao;
+import Dao.EmpresaDaoImp;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,7 @@ public class Cliente implements java.io.Serializable {
     private String cpf;
     @Column(name = "rg", nullable = false, length = 20)
     private String rg;
-    @Column (name ="data_nascimento", nullable = false)
+    @Column(name = "data_nascimento", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataNascimento;
     @Column(name = "sexo", nullable = false)
@@ -63,7 +65,7 @@ public class Cliente implements java.io.Serializable {
     private String endCidade;
     @Column(name = "end_estado", nullable = false, length = 2)
     private String endEstado;
-    @Column (name = "end_bairro", nullable = false, length = 45)
+    @Column(name = "end_bairro", nullable = false, length = 45)
     private String endBairro;
     @Column(name = "email", nullable = false, length = 45)
     private String email;
@@ -83,6 +85,7 @@ public class Cliente implements java.io.Serializable {
     private char statusCartao;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
     private List<Venda> vendas = new ArrayList<Venda>();
+    private int idEmpresa;
 
     public Cliente() {
     }
@@ -113,6 +116,15 @@ public class Cliente implements java.io.Serializable {
         this.pagDigConta = pagDigConta;
         this.pagCidadeAgencia = pagCidadeAgencia;
         this.statusCartao = statusCartao;
+    }
+
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        EmpresaDao empresaDao = new EmpresaDaoImp();
+        this.empresa = empresaDao.getEmpresa(idEmpresa);
     }
 
     public Integer getIdCliente() {
@@ -326,6 +338,4 @@ public class Cliente implements java.io.Serializable {
     public void setVendas(List<Venda> vendas) {
         this.vendas = vendas;
     }
-
-    
 }

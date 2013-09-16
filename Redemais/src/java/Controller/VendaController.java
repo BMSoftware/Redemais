@@ -20,7 +20,7 @@ import javax.faces.model.ListDataModel;
 @SessionScoped
 public class VendaController implements Serializable {
 
-    @ManagedProperty(value = "#{cliente}")
+    @ManagedProperty(value = "#{clienteController}")
     private ClienteController clienteBean;
     private Cliente cliente;
     private Venda venda;

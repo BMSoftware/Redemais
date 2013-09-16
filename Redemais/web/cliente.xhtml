@@ -22,13 +22,17 @@
                  <h1>Cadastrar Cliente</h1>
                 <h:form>
                     <br/>
-                    Empresa: <h:inputText value="#{clienteController.cliente.empresa}"/>
+                    Empresa: <h:inputText value="#{clienteController.cliente.idEmpresa}"/>
                     <br/>
                     Dados Cadastrais do Cliente:<br/>
                     Nome: <h:inputText value="#{clienteController.cliente.nome}"/><br/>
                     CPF: <h:inputText value="#{clienteController.cliente.cpf}"/><br/>
                     RG: <h:inputText value="#{clienteController.cliente.rg}"/> <br/>
-                    Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}"/><br/>
+                    Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}">
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                        
+                        <br/>
                     Sexo: <h:selectOneMenu value="#{clienteController.cliente.sexo}">
                         <f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
                         <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
