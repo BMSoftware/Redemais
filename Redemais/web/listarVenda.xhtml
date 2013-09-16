@@ -13,9 +13,12 @@
             <p:layoutUnit position="left" width="200" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
                 <h:form prependId="false">
                     <h:commandButton action="index" value="Home"/>
-                    <h:commandButton action="#{vendaController.prepararAdicionarVenda}" value="Lançar Venda"/>
-                    <h:commandButton action="#{clienteController.prepararAdicionarCliente}" value="Cadastrar Cliente"/>
-                    <h:commandButton action="listarVenda" value="Listar / Cancelar Vendas"/>
+                   <br/>
+                    <h:commandButton value="Cadastrar Cliente" action="#{clienteController.prepararAdicionarCliente}"/>
+                    <br/>
+                    <h:commandButton value="Lançar Venda" action="#{vendaController.prepararAdicionarVenda}" />
+                    <br/>
+                    <h:commandButton value="Listar Vendas" action="#{vendaController.prepararListarVenda}"/>
                 </h:form>
             </p:layoutUnit>
             <p:layoutUnit position="center" resizable="true">
@@ -47,17 +50,17 @@
                             </f:facet>
                             <h:outputText value="#{venda.valor}"/>
                         </p:column>
-                        <p:column>
+                       <!-- <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Alterar"/>
                             </f:facet>
                             <p:commandButton actionListener="#{vendaController.prepararAlterarVenda}" value="Alterar" update="infosVenda" oncomplete="dialogGerVenda.show()"/>
-                        </p:column>
+                        </p:column> -->
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Excluir"/>
                             </f:facet>
-                            <p:commandButton actionListener="#{vendaController.excluirVenda}" value="Excluir"/>
+                            <h:commandButton action="#{cancelamentoController.prepararAdicionarCancelamento(venda)}" value="Excluir"/>
                         </p:column>
                     </p:dataTable>
                 </h:form>

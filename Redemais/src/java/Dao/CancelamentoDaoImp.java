@@ -1,8 +1,8 @@
 package Dao;
 
-import Model.Cliente;
+import Model.Cancelamento;
 import Utils.HibernateUtil;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,45 +11,49 @@ import org.hibernate.Transaction;
  *
  * @author Bruno
  */
-public class ClienteDaoImp implements ClienteDao {
+public class CancelamentoDaoImp implements CancelamentoDao {
 
     @Override
-    public void save(Cliente cliente) {
+    public void save(Cancelamento cancelamento) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        session.save(cliente);
+        cancelamento.setDataCancelamento(new Date(System.currentTimeMillis()));
+        cancelamento.setHora(new Date(System.currentTimeMillis())); 
+        cancelamento.setIdUser(1);
+        session.save(cancelamento);
         t.commit();
+        cancelamento.getVenda().setStatus('C');
+        new VendaDaoImp().update(cancelamento.getVenda());
     }
 
     @Override
-    public Cliente getCliente(int idCliente) {
+    public Cancelamento getCancelamento(int idCancelamento) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return (Cliente) session.load(Cliente.class, idCliente);
+        return (Cancelamento) session.load(Cancelamento.class, idCancelamento);
     }
 
     @Override
-    public List<Cliente> list() {
+    public List<Cancelamento> list() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        List lista = session.createQuery("from Cliente").list();
+        List lista = session.createQuery("from Cancelamento").list();
         t.commit();
         return lista;
     }
 
     @Override
-    public void remove(Cliente cliente) {
+    public void remove(Cancelamento cancelamento) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        session.delete(cliente);
+        session.delete(cancelamento);
         t.commit();
     }
 
     @Override
-    public void update(Cliente cliente) {
+    public void update(Cancelamento cancelamento) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        session.merge(cliente);
+        session.merge(cancelamento);
         t.commit();
-
     }
 }

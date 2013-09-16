@@ -11,8 +11,8 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "empresaController", eager = true)
 @SessionScoped
-public class EmpresaController implements Serializable{
-    
+public class EmpresaController implements Serializable {
+
     private Empresa empresa;
 
     public Empresa getEmpresa() {
@@ -22,6 +22,4 @@ public class EmpresaController implements Serializable{
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-    
-    
 }

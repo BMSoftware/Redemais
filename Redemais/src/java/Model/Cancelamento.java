@@ -35,15 +35,18 @@ public class Cancelamento implements java.io.Serializable {
     private Date dataCancelamento;
     @Column(name = "motivo", nullable = false, length = 450)
     private String motivo;
+    @Column(name = "id_user", nullable = false)
+    private int idUser;
 
     public Cancelamento() {
     }
 
-    public Cancelamento(Venda venda, Date hora, Date dataCancelamento, String motivo) {
+    public Cancelamento(Venda venda, Date hora, Date dataCancelamento, String motivo, int idUser) {
         this.venda = venda;
         this.hora = hora;
         this.dataCancelamento = dataCancelamento;
         this.motivo = motivo;
+        this.idUser = idUser;
     }
 
     public Integer getIdCancelamento() {
@@ -80,5 +83,13 @@ public class Cancelamento implements java.io.Serializable {
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

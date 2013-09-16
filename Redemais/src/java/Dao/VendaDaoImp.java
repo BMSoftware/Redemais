@@ -34,7 +34,7 @@ public class VendaDaoImp implements VendaDao {
     public List<Venda> list() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        List lista = session.createQuery("from Venda").list();
+        List lista = session.createQuery("from Venda v where v.status = 'A'").list();
         t.commit();
         return lista;
     }
