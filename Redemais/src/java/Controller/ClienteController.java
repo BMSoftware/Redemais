@@ -20,9 +20,9 @@ import javax.faces.model.ListDataModel;
 @SessionScoped
 public class ClienteController implements Serializable {
 
-//    @ManagedProperty(value = "#{empresaController}")
-//    private EmpresaController empresaBean;
-//    private Empresa empresa;
+    @ManagedProperty(value = "#{empresaController}")
+    private EmpresaController empresaBean;
+    private Empresa empresa;
     private Cliente cliente;
     private DataModel listaClientes;
 
@@ -32,24 +32,24 @@ public class ClienteController implements Serializable {
         return listaClientes;
     }
 
-//    public EmpresaController getEmpresaBean() {
-//        return empresaBean;
-//    }
-//
-//    public void setEmpresaBean(EmpresaController empresaBean) {
-//        this.empresaBean = empresaBean;
-//    }
-//
-//    public Empresa getEmpresa() {
-//        if (empresaBean != null) {
-//            empresa = empresaBean.getEmpresa();
-//        }
-//        return empresa;
-//    }
-//
-//    public void setEmpresa(Empresa empresa) {
-//        this.empresa = empresa;
-//    }
+    public EmpresaController getEmpresaBean() {
+        return empresaBean;
+    }
+
+    public void setEmpresaBean(EmpresaController empresaBean) {
+        this.empresaBean = empresaBean;
+    }
+
+    public Empresa getEmpresa() {
+        if (empresaBean != null) {
+            empresa = empresaBean.getEmpresa();
+        }
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
 
     public Cliente getCliente() {
         return cliente;

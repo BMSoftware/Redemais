@@ -2,6 +2,7 @@ package Dao;
 
 import Model.Cliente;
 import Utils.HibernateUtil;
+import java.sql.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,6 +17,7 @@ public class ClienteDaoImp implements ClienteDao {
     public void save(Cliente cliente) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
+        cliente.setDataNascimento(new Date(System.currentTimeMillis()));
         session.save(cliente);
         t.commit();
     }

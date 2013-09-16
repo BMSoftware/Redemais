@@ -41,7 +41,6 @@ public class Cliente implements java.io.Serializable {
     @Column(name = "rg", nullable = false, length = 20)
     private String rg;
     @Column(name = "data_nascimento", nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataNascimento;
     @Column(name = "sexo", nullable = false)
     private String sexo;

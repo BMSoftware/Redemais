@@ -12,14 +12,14 @@
         <p:layout fullPage="true">
             <p:layoutUnit position="left" width="200" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
                 <h:form prependId="false">
-                     <h:commandButton action="index" value="Home"/>
+                    <h:commandButton action="index" value="Home"/>
                     <h:commandButton action="#{vendaController.prepararAdicionarVenda()}" value="Lançar Venda"/>
                     <h:commandButton action="#{clienteController.prepararAdicionarCliente}" value="Cadastrar Cliente"/>
                     <h:commandButton action="listarVenda" value="Listar / Cancelar Vendas"/>
                 </h:form>
             </p:layoutUnit>
             <p:layoutUnit position="center" resizable="true">
-                 <h1>Cadastrar Cliente</h1>
+                <h1>Cadastrar Cliente</h1>
                 <h:form>
                     <br/>
                     Empresa: <h:inputText value="#{clienteController.cliente.idEmpresa}"/>
@@ -28,11 +28,8 @@
                     Nome: <h:inputText value="#{clienteController.cliente.nome}"/><br/>
                     CPF: <h:inputText value="#{clienteController.cliente.cpf}"/><br/>
                     RG: <h:inputText value="#{clienteController.cliente.rg}"/> <br/>
-                    Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}">
-                        <f:convertDateTime pattern="yyyy-MM-dd"/>
-                    </h:inputText>
-                        
-                        <br/>
+                    <!--Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}"/>-->
+                    <br/>
                     Sexo: <h:selectOneMenu value="#{clienteController.cliente.sexo}">
                         <f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
                         <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
@@ -56,8 +53,8 @@
                     Número da Agência: <h:inputText value="#{clienteController.cliente.pagAgencia}"/> - <h:inputText value="#{clienteController.cliente.pagDigAgencia}" size="2"/><br/> 
                     Número da Conta: <h:inputText value="#{clienteController.cliente.pagConta}"/> - <h:inputText value="#{clienteController.cliente.pagDigConta}" size="2"/><br/>
                     Tipo de Conta: <h:selectOneMenu value="#{clienteController.cliente.pagTipoConta}">
-                        <f:selectItem itemLabel="Conta Corrente" itemValue="Conta Corrente"/>
-                        <f:selectItem itemLabel="Conta Poupança" itemValue="Conta Poupança"/>
+                        <f:selectItem itemLabel="Conta Corrente" itemValue="Corrente"/>
+                        <f:selectItem itemLabel="Conta Poupança" itemValue="Poupança"/>
                     </h:selectOneMenu><br/>
                     Município da Agência: <h:inputText value="#{clienteController.cliente.pagCidadeAgencia}"/><br/><br/>
                     Patrocinador/Indicador: (Direto do user)
