@@ -1,6 +1,6 @@
 package Model;
-// Generated 04/09/2013 00:26:25 by Hibernate Tools 3.2.1.GA
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -37,6 +38,11 @@ public class Cliente implements java.io.Serializable {
     private String cpf;
     @Column(name = "rg", nullable = false, length = 20)
     private String rg;
+    @Column (name ="data_nascimento", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataNascimento;
+    @Column(name = "sexo", nullable = false)
+    private String sexo;
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
     @Column(name = "fone_res_ddd", length = 2)
@@ -57,6 +63,8 @@ public class Cliente implements java.io.Serializable {
     private String endCidade;
     @Column(name = "end_estado", nullable = false, length = 2)
     private String endEstado;
+    @Column (name = "end_bairro", nullable = false, length = 45)
+    private String endBairro;
     @Column(name = "email", nullable = false, length = 45)
     private String email;
     @Column(name = "pag_tipo_conta", nullable = false, length = 10)
@@ -79,11 +87,13 @@ public class Cliente implements java.io.Serializable {
     public Cliente() {
     }
 
-    public Cliente(Empresa empresa, int pagBanco, String cpf, String rg, String nome, String foneResDdd, String foneRes, String foneCelDdd, String foneCel, String endRua, String endNumero, String endComplemento, String endCidade, String endEstado, String email, String pagTipoConta, String pagAgencia, String pagDigAgencia, String pagConta, String pagDigConta, String pagCidadeAgencia, char statusCartao) {
+    public Cliente(Empresa empresa, int pagBanco, String cpf, String rg, Date dataNascimento, String sexo, String nome, String foneResDdd, String foneRes, String foneCelDdd, String foneCel, String endRua, String endNumero, String endComplemento, String endCidade, String endEstado, String endBairro, String email, String pagTipoConta, String pagAgencia, String pagDigAgencia, String pagConta, String pagDigConta, String pagCidadeAgencia, char statusCartao) {
         this.empresa = empresa;
         this.pagBanco = pagBanco;
         this.cpf = cpf;
         this.rg = rg;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
         this.nome = nome;
         this.foneResDdd = foneResDdd;
         this.foneRes = foneRes;
@@ -94,6 +104,7 @@ public class Cliente implements java.io.Serializable {
         this.endComplemento = endComplemento;
         this.endCidade = endCidade;
         this.endEstado = endEstado;
+        this.endBairro = endBairro;
         this.email = email;
         this.pagTipoConta = pagTipoConta;
         this.pagAgencia = pagAgencia;
@@ -105,27 +116,27 @@ public class Cliente implements java.io.Serializable {
     }
 
     public Integer getIdCliente() {
-        return this.idCliente;
+        return idCliente;
     }
 
     public Empresa getEmpresa() {
-        return this.empresa;
+        return empresa;
     }
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
 
-    public int getPagBancos() {
-        return this.pagBanco;
+    public int getPagBanco() {
+        return pagBanco;
     }
 
-    public void setPagBancos(int pagBanco) {
+    public void setPagBanco(int pagBanco) {
         this.pagBanco = pagBanco;
     }
 
     public String getCpf() {
-        return this.cpf;
+        return cpf;
     }
 
     public void setCpf(String cpf) {
@@ -133,15 +144,31 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getRg() {
-        return this.rg;
+        return rg;
     }
 
     public void setRg(String rg) {
         this.rg = rg;
     }
 
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
     public void setNome(String nome) {
@@ -149,7 +176,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getFoneResDdd() {
-        return this.foneResDdd;
+        return foneResDdd;
     }
 
     public void setFoneResDdd(String foneResDdd) {
@@ -157,7 +184,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getFoneRes() {
-        return this.foneRes;
+        return foneRes;
     }
 
     public void setFoneRes(String foneRes) {
@@ -165,7 +192,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getFoneCelDdd() {
-        return this.foneCelDdd;
+        return foneCelDdd;
     }
 
     public void setFoneCelDdd(String foneCelDdd) {
@@ -173,7 +200,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getFoneCel() {
-        return this.foneCel;
+        return foneCel;
     }
 
     public void setFoneCel(String foneCel) {
@@ -181,7 +208,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getEndRua() {
-        return this.endRua;
+        return endRua;
     }
 
     public void setEndRua(String endRua) {
@@ -189,7 +216,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getEndNumero() {
-        return this.endNumero;
+        return endNumero;
     }
 
     public void setEndNumero(String endNumero) {
@@ -197,7 +224,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getEndComplemento() {
-        return this.endComplemento;
+        return endComplemento;
     }
 
     public void setEndComplemento(String endComplemento) {
@@ -205,7 +232,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getEndCidade() {
-        return this.endCidade;
+        return endCidade;
     }
 
     public void setEndCidade(String endCidade) {
@@ -213,15 +240,23 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getEndEstado() {
-        return this.endEstado;
+        return endEstado;
     }
 
     public void setEndEstado(String endEstado) {
         this.endEstado = endEstado;
     }
 
+    public String getEndBairro() {
+        return endBairro;
+    }
+
+    public void setEndBairro(String endBairro) {
+        this.endBairro = endBairro;
+    }
+
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
@@ -229,7 +264,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getPagTipoConta() {
-        return this.pagTipoConta;
+        return pagTipoConta;
     }
 
     public void setPagTipoConta(String pagTipoConta) {
@@ -237,7 +272,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getPagAgencia() {
-        return this.pagAgencia;
+        return pagAgencia;
     }
 
     public void setPagAgencia(String pagAgencia) {
@@ -245,7 +280,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getPagDigAgencia() {
-        return this.pagDigAgencia;
+        return pagDigAgencia;
     }
 
     public void setPagDigAgencia(String pagDigAgencia) {
@@ -253,7 +288,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getPagConta() {
-        return this.pagConta;
+        return pagConta;
     }
 
     public void setPagConta(String pagConta) {
@@ -261,7 +296,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getPagDigConta() {
-        return this.pagDigConta;
+        return pagDigConta;
     }
 
     public void setPagDigConta(String pagDigConta) {
@@ -269,7 +304,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public String getPagCidadeAgencia() {
-        return this.pagCidadeAgencia;
+        return pagCidadeAgencia;
     }
 
     public void setPagCidadeAgencia(String pagCidadeAgencia) {
@@ -277,7 +312,7 @@ public class Cliente implements java.io.Serializable {
     }
 
     public char getStatusCartao() {
-        return this.statusCartao;
+        return statusCartao;
     }
 
     public void setStatusCartao(char statusCartao) {
@@ -285,10 +320,12 @@ public class Cliente implements java.io.Serializable {
     }
 
     public List<Venda> getVendas() {
-        return this.vendas;
+        return vendas;
     }
 
     public void setVendas(List<Venda> vendas) {
         this.vendas = vendas;
     }
+
+    
 }

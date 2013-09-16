@@ -22,26 +22,35 @@
                  <h1>Cadastrar Cliente</h1>
                 <h:form>
                     <br/>
+                    Empresa: <h:inputText value="#{clienteController.cliente.empresa}"/>
+                    <br/>
                     Dados Cadastrais do Cliente:<br/>
                     Nome: <h:inputText value="#{clienteController.cliente.nome}"/><br/>
                     CPF: <h:inputText value="#{clienteController.cliente.cpf}"/><br/>
                     RG: <h:inputText value="#{clienteController.cliente.rg}"/> <br/>
-                    Data de Nascimento: (Not found)<br/>
-                    Sexo: (Not found)<br/><br/>
+                    Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}"/><br/>
+                    Sexo: <h:selectOneMenu value="#{clienteController.cliente.sexo}">
+                        <f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
+                        <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+                    </h:selectOneMenu><br/><br/>
                     Endereço e Contato:<br/>
                     Rua: <h:inputText value="#{clienteController.cliente.endRua}"/><br/>
                     Nº: <h:inputText value="#{clienteController.cliente.endNumero}"/><br/>
                     Complemento: <h:inputText value="#{clienteController.cliente.endComplemento}"/><br/>
-                    Bairro: (Not found)<br/>
+                    Bairro: <h:inputText value="#{clienteController.cliente.endBairro}"/><br/>
                     Cidade: <h:inputText value="#{clienteController.cliente.endCidade}"/><br/>
+                    Estado: <h:inputText value="#{clienteController.cliente.endEstado}"/><br/>
                     Telefone fixo: <h:inputText size="1" value="#{clienteController.cliente.foneResDdd}"/> <h:inputText value="#{clienteController.cliente.foneRes}"/><br/>
                     Telefone celular: <h:inputText size="1" value="#{clienteController.cliente.foneCelDdd}"/> <h:inputText value="#{clienteController.cliente.foneCel}"/><br/>
                     E-mail: <h:inputText size="30" value="#{clienteController.cliente.email}"/><br/>
                     <br/>
                     Dados Bancários:<br/>
-                    Banco: (Implementar código direto com lista bancos)<br/>
-                    Número da Agência: <h:inputText value="#{clienteController.cliente.pagAgencia}"/> - <h:inputText value="#{clienteController.cliente.pagDigAgencia}"/><br/> 
-                    Número da Conta: <h:inputText value="#{clienteController.cliente.pagConta}"/> - <h:inputText value="#{clienteController.cliente.pagDigConta}"/><br/>
+                    Banco: <h:selectOneMenu value="#{clienteController.cliente.pagBanco}">
+                        <f:selectItem itemLabel="Bradesco" itemValue="237"/>
+                        <f:selectItem itemLabel="Banco do Brasil" itemValue="001"/>
+                    </h:selectOneMenu><br/>
+                    Número da Agência: <h:inputText value="#{clienteController.cliente.pagAgencia}"/> - <h:inputText value="#{clienteController.cliente.pagDigAgencia}" size="2"/><br/> 
+                    Número da Conta: <h:inputText value="#{clienteController.cliente.pagConta}"/> - <h:inputText value="#{clienteController.cliente.pagDigConta}" size="2"/><br/>
                     Tipo de Conta: <h:selectOneMenu value="#{clienteController.cliente.pagTipoConta}">
                         <f:selectItem itemLabel="Conta Corrente" itemValue="Conta Corrente"/>
                         <f:selectItem itemLabel="Conta Poupança" itemValue="Conta Poupança"/>

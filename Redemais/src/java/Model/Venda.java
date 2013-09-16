@@ -1,5 +1,4 @@
 package Model;
-// Generated 04/09/2013 00:26:25 by Hibernate Tools 3.2.1.GA
 
 import Dao.ClienteDao;
 import Dao.ClienteDaoImp;
