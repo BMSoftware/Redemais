@@ -14,9 +14,9 @@
                 <h:form>
                     <h:commandButton value="Novo Cliente" action="#{clienteController.prepararAdicionarCliente}"/>
                     <br/>
-                    <h:commandButton value="Lançar Venda" action="#{vendaController.prepararAdicionarVenda()}" />
+                    <h:commandButton value="Lançar Venda" action="#{vendaController.prepararAdicionarVenda}" />
                     <br/>
-                    <h:commandButton value="Listar Lançamentos do Dia" action="listarVenda"/>
+                    <h:commandButton value="Listar Lançamentos do Dia" action="#{vendaController.prepararListarVenda}"/>
                 </h:form>
             </p:layoutUnit>
         </p:layout>

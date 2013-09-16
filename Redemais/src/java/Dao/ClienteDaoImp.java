@@ -17,7 +17,6 @@ public class ClienteDaoImp implements ClienteDao {
     public void save(Cliente cliente) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        cliente.setDataNascimento(new Date(System.currentTimeMillis()));
         session.save(cliente);
         t.commit();
     }

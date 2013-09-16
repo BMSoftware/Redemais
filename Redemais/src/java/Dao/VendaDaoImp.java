@@ -51,7 +51,7 @@ public class VendaDaoImp implements VendaDao {
     public void update(Venda venda) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
-        session.update(venda);
+        session.merge(venda);
         t.commit();
     }
 }

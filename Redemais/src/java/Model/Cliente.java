@@ -2,7 +2,7 @@ package Model;
 
 import Dao.EmpresaDao;
 import Dao.EmpresaDaoImp;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -40,7 +41,8 @@ public class Cliente implements java.io.Serializable {
     private String cpf;
     @Column(name = "rg", nullable = false, length = 20)
     private String rg;
-    @Column(name = "data_nascimento", nullable = false)
+    @Temporal(TemporalType.DATE)
+    @Column(name="data_nascimento", length=10)
     private Date dataNascimento;
     @Column(name = "sexo", nullable = false)
     private String sexo;
@@ -124,6 +126,7 @@ public class Cliente implements java.io.Serializable {
     public void setIdEmpresa(int idEmpresa) {
         EmpresaDao empresaDao = new EmpresaDaoImp();
         this.empresa = empresaDao.getEmpresa(idEmpresa);
+        this.idEmpresa = idEmpresa;
     }
 
     public Integer getIdCliente() {

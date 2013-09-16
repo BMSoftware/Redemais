@@ -9,6 +9,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
@@ -64,9 +65,12 @@ public class VendaController implements Serializable {
         return "venda";
     }
 
-    public String prepararAlterarVenda() {
+    public void prepararAlterarVenda(ActionEvent actionEvent) {
         venda = (Venda) (listaVendas.getRowData());
-        return "venda";
+    }
+    
+    public String prepararListarVenda(){
+        return "listarVenda";
     }
 
     public String excluirVenda() {
@@ -82,9 +86,8 @@ public class VendaController implements Serializable {
         return "venda";
     }
 
-    public String alterarVenda() {
+    public void alterarVenda(ActionEvent actionEvent) {
         VendaDao dao = new VendaDaoImp();
         dao.update(venda);
-        return "venda";
     }
 }

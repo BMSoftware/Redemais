@@ -13,7 +13,7 @@
             <p:layoutUnit position="left" width="200" header="Funcionalidades" resizable="true" closable="true" collapsible="true">
                 <h:form prependId="false">
                     <h:commandButton action="index" value="Home"/>
-                    <h:commandButton action="#{vendaController.prepararAdicionarVenda()}" value="Lançar Venda"/>
+                    <h:commandButton action="#{vendaController.prepararAdicionarVenda}" value="Lançar Venda"/>
                     <h:commandButton action="#{clienteController.prepararAdicionarCliente}" value="Cadastrar Cliente"/>
                     <h:commandButton action="listarVenda" value="Listar / Cancelar Vendas"/>
                 </h:form>
@@ -28,7 +28,9 @@
                     Nome: <h:inputText value="#{clienteController.cliente.nome}"/><br/>
                     CPF: <h:inputText value="#{clienteController.cliente.cpf}"/><br/>
                     RG: <h:inputText value="#{clienteController.cliente.rg}"/> <br/>
-                    <!--Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}"/>-->
+                    Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}">
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    </h:inputText>
                     <br/>
                     Sexo: <h:selectOneMenu value="#{clienteController.cliente.sexo}">
                         <f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
