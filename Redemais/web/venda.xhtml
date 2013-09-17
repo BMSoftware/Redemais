@@ -23,12 +23,19 @@
             <p:layoutUnit position="center" resizable="true">
                 <h1>Lançamentos de Venda</h1>
                 <h:form prependId="false">
-                    <br/>
-                    Cliente: <h:inputText value="#{vendaController.venda.idCliente}"/>
-                    Valor: <h:inputText value="#{vendaController.venda.valor}" requiredMessage="Favor preencher o campo [Valor]"/><br/>
-                    <h:commandButton action="#{vendaController.adicionarVenda}" value="Gravar"/>
-                    <br/>
+                    <h:messages />
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Cliente: " for="cliente" />
+                        <h:inputText id="cliente" label="Cliente" value="#{vendaController.venda.idCliente}" required="true"/>
+                        <h:outputLabel value="Valor: " for="valor" />
+                        <h:inputText id="valor" label="Valor" value="#{vendaController.venda.valor}" required="true"/>
+                        <h:outputLabel value="Confirmar Valor: " for="confirmarValor" />
+                        <h:inputText id="confirmarValor" label="ConfirmarValor" value="#{vendaController.venda.confirmaValor}" required="true" />
+                        <h:outputText />
+                        <h:commandButton action="#{vendaController.adicionarVenda}" value="Gravar"/>
+                    </h:panelGrid>
                 </h:form>
+                <hr/>
             </p:layoutUnit>
         </p:layout>
     </h:body>

@@ -53,6 +53,7 @@ public class CancelamentoController implements Serializable {
         cancelamento = new Cancelamento();
         cancelamento.setVenda(venda);
         this.venda = venda;
+        this.vendaBean.setVenda(venda);
         return "cancelamento";
     }
     

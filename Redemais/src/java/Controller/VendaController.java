@@ -6,9 +6,11 @@ import Model.Cliente;
 import Model.Venda;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -81,6 +83,11 @@ public class VendaController implements Serializable {
     }
 
     public String adicionarVenda() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        if(this.venda.getValor()!= this.venda.getConfirmaValor()){
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Os valores inseridos não são iguais", ""));
+            return "venda";
+        }
         VendaDao dao = new VendaDaoImp();
         dao.save(venda);
         return "venda";

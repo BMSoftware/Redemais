@@ -23,11 +23,17 @@
             <p:layoutUnit position="center" resizable="true">
                 <h1>Cancelamento de Venda</h1>
                 <h:form prependId="false">
-                    <br/>
-                    <!--Cliente: <h:inputText value="#{cancelamentoController.venda.idVenda}"/><br/>-->
-                    Motivo <h:inputTextarea value="#{cancelamentoController.cancelamento.motivo}"/><br/><br/>
-                    <h:commandButton action="#{cancelamentoController.adicionarCancelamento()}" value="Gravar"/>
-                    <br/>
+                    <h:messages />
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Cliente: " for="cliente" />
+                        <h:outputText id="cliente" value="#{cancelamentoController.vendaBean.venda.cliente.nome}"/>
+                        <h:outputLabel value="Valor: " for="valor" />
+                        <h:outputText id="valor" value="#{cancelamentoController.vendaBean.venda.valor}"/>
+                        <h:outputLabel value="Motivo: " for="motivo" />
+                        <h:inputTextarea id="motivo" label="Motivo" value="#{cancelamentoController.cancelamento.motivo}" required="true" requiredMessage="Favor informar o motivo de cancelamento"/>
+                        <h:outputText />
+                        <h:commandButton action="#{cancelamentoController.adicionarCancelamento()}" value="Gravar"/>
+                    </h:panelGrid>
                 </h:form>
             </p:layoutUnit>
         </p:layout>
