@@ -1,5 +1,7 @@
 package Controller;
 
+import Dao.ClienteDao;
+import Dao.ClienteDaoImp;
 import Dao.VendaDao;
 import Dao.VendaDaoImp;
 import Model.Cliente;
@@ -14,6 +16,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import org.hibernate.exception.ConstraintViolationException;
 
 /**
  *
@@ -28,6 +31,8 @@ public class VendaController implements Serializable {
     private Cliente cliente;
     private Venda venda;
     private DataModel listaVendas;
+    private String cfpTemp;
+    private String nomeTemp;
 
     public DataModel getListarVendas() {
         List<Venda> lista = new VendaDaoImp().list();
@@ -70,9 +75,33 @@ public class VendaController implements Serializable {
     public void prepararAlterarVenda(ActionEvent actionEvent) {
         venda = (Venda) (listaVendas.getRowData());
     }
-    
-    public String prepararListarVenda(){
+
+    public String prepararListarVenda() {
         return "listarVenda";
+    }
+
+    public void validarCliente() {
+        if (venda.getIdCliente() != 0) {
+            ClienteDao dao = new ClienteDaoImp();
+                Cliente clienteTemp = dao.getCliente(venda.getIdCliente());
+                if (clienteTemp != null) {
+                    setNomeTemp(clienteTemp.getNome());
+                } else {
+                    setNomeTemp("");
+                }
+        } else {
+            if (venda.getCpfCliente() != null && !venda.getCpfCliente().equals("")) {
+                ClienteDao dao = new ClienteDaoImp();
+                Cliente clienteTemp = dao.getCliente(venda.getCpfCliente());
+                if (clienteTemp != null) {
+                    setNomeTemp(clienteTemp.getNome());
+                } else {
+                    setNomeTemp("");
+                }
+            } else {
+                setNomeTemp("");
+            }
+        }
     }
 
     public String excluirVenda() {
@@ -83,18 +112,42 @@ public class VendaController implements Serializable {
     }
 
     public String adicionarVenda() {
+        setNomeTemp("");
         FacesContext context = FacesContext.getCurrentInstance();
-        if(this.venda.getValor()!= this.venda.getConfirmaValor()){
+        if (this.venda.getValor() != this.venda.getConfirmaValor()) {
+            venda = new Venda();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Os valores inseridos não são iguais", ""));
             return "venda";
         }
         VendaDao dao = new VendaDaoImp();
-        dao.save(venda);
-        return "venda";
+        try {
+            dao.save(venda);
+        } catch (ConstraintViolationException npe) {
+            venda = new Venda();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Não foi encontrado nenhum cliente com esse código ou CPF", ""));
+            return "venda";
+        }
+        return prepararAdicionarVenda();
     }
 
     public void alterarVenda(ActionEvent actionEvent) {
         VendaDao dao = new VendaDaoImp();
         dao.update(venda);
+    }
+
+    public String getCfpTemp() {
+        return cfpTemp;
+    }
+
+    public void setCfpTemp(String cfpTemp) {
+        this.cfpTemp = cfpTemp;
+    }
+
+    public String getNomeTemp() {
+        return nomeTemp;
+    }
+
+    public void setNomeTemp(String nomeTemp) {
+        this.nomeTemp = nomeTemp;
     }
 }

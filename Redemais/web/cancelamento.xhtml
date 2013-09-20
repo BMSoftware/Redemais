@@ -31,6 +31,8 @@
                         <h:outputText id="valor" value="#{cancelamentoController.vendaBean.venda.valor}"/>
                         <h:outputLabel value="Motivo: " for="motivo" />
                         <h:inputTextarea id="motivo" label="Motivo" value="#{cancelamentoController.cancelamento.motivo}" required="true" requiredMessage="Favor informar o motivo de cancelamento"/>
+                        <h:outputLabel value="Senha: " for="senha"/>
+                        <h:inputSecret id="senha" label="Senha" value="#{cancelamentoController.cancelamento.senha}"/>
                         <h:outputText />
                         <h:commandButton action="#{cancelamentoController.adicionarCancelamento()}" value="Gravar"/>
                     </h:panelGrid>

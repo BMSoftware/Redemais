@@ -24,14 +24,15 @@
             <p:layoutUnit position="center" resizable="true">
                 <h1>Cadastrar Cliente</h1>
                 <h:form>
+                    <h:messages />
                     <br/>
                     Empresa: <h:inputText value="#{clienteController.cliente.idEmpresa}"/>
                     <br/>
                     Dados Cadastrais do Cliente:<br/>
-                    Nome: <h:inputText value="#{clienteController.cliente.nome}"/><br/>
-                    CPF: <h:inputText value="#{clienteController.cliente.cpf}"/><br/>
-                    RG: <h:inputText value="#{clienteController.cliente.rg}"/> <br/>
-                    Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}">
+                    Nome: <h:inputText value="#{clienteController.cliente.nome}" maxlength="100" required="true" requiredMessage="Favor informar o nome do cliente!"/><br/>
+                    CPF: <h:inputText value="#{clienteController.cliente.cpf}" maxlength="11" required="true" requiredMessage="Favor informar o CPF do cliente!"/><br/>
+                    RG: <h:inputText value="#{clienteController.cliente.rg}" maxlength="20" required="true" requiredMessage="Favor informar o RG do cliente!"/> <br/>
+                    Data de Nascimento: <h:inputText value="#{clienteController.cliente.dataNascimento}" maxlength="10" required="true" requiredMessage="Favor informar a data de nascimento do cliente!">
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:inputText>
                     <br/>
@@ -40,29 +41,32 @@
                         <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
                     </h:selectOneMenu><br/><br/>
                     Endereço e Contato:<br/>
-                    Rua: <h:inputText value="#{clienteController.cliente.endRua}"/><br/>
-                    Nº: <h:inputText value="#{clienteController.cliente.endNumero}"/><br/>
-                    Complemento: <h:inputText value="#{clienteController.cliente.endComplemento}"/><br/>
-                    Bairro: <h:inputText value="#{clienteController.cliente.endBairro}"/><br/>
-                    Cidade: <h:inputText value="#{clienteController.cliente.endCidade}"/><br/>
-                    Estado: <h:inputText value="#{clienteController.cliente.endEstado}"/><br/>
-                    Telefone fixo: <h:inputText size="1" value="#{clienteController.cliente.foneResDdd}"/> <h:inputText value="#{clienteController.cliente.foneRes}"/><br/>
-                    Telefone celular: <h:inputText size="1" value="#{clienteController.cliente.foneCelDdd}"/> <h:inputText value="#{clienteController.cliente.foneCel}"/><br/>
-                    E-mail: <h:inputText size="30" value="#{clienteController.cliente.email}"/><br/>
+                    Rua: <h:inputText value="#{clienteController.cliente.endRua}" maxlength="60" required="true" requiredMessage="Favor informar a rua do cliente!"/><br/>
+                    Nº: <h:inputText value="#{clienteController.cliente.endNumero}" maxlength="10"/><br/>
+                    Complemento: <h:inputText value="#{clienteController.cliente.endComplemento}" maxlength="45"/><br/>
+                    Bairro: <h:inputText value="#{clienteController.cliente.endBairro}" maxlength="45" required="true" requiredMessage="Favor informar o bairro do cliente!"/><br/>
+                    Cidade: <h:inputText value="#{clienteController.cliente.endCidade}" maxlength="45" required="true" requiredMessage="Favor informar a cidade do cliente!"/><br/>
+                    Estado: <h:inputText value="#{clienteController.cliente.endEstado}" maxlength="2" required="true" requiredMessage="Favor informar o estado do cliente!"/><br/>
+                    Telefone fixo: <h:inputText value="#{clienteController.cliente.foneResDdd}" maxlength="2" size="2"/> 
+                    <h:inputText value="#{clienteController.cliente.foneRes}" maxlength="8" size="8"/><br/>
+                    Telefone celular: <h:inputText value="#{clienteController.cliente.foneCelDdd}" maxlength="2" size="2" required="true" requiredMessage="Favor informar o DDD do celular do cliente!"/> 
+                    <h:inputText value="#{clienteController.cliente.foneCel}" maxlength="8" size="8" required="true" requiredMessage="Favor informar o celular do cliente!"/><br/>
+                    E-mail: <h:inputText value="#{clienteController.cliente.email}" maxlength="45" size="30"/><br/>
                     <br/>
                     Dados Bancários:<br/>
                     Banco: <h:selectOneMenu value="#{clienteController.cliente.pagBanco}">
                         <f:selectItem itemLabel="Bradesco" itemValue="237"/>
                         <f:selectItem itemLabel="Banco do Brasil" itemValue="001"/>
                     </h:selectOneMenu><br/>
-                    Número da Agência: <h:inputText value="#{clienteController.cliente.pagAgencia}"/> - <h:inputText value="#{clienteController.cliente.pagDigAgencia}" size="2"/><br/> 
-                    Número da Conta: <h:inputText value="#{clienteController.cliente.pagConta}"/> - <h:inputText value="#{clienteController.cliente.pagDigConta}" size="2"/><br/>
+                    Número da Agência: <h:inputText value="#{clienteController.cliente.pagAgencia}" size="5" maxlength="10" required="true" requiredMessage="Favor informar o número da agencia do cliente!" /> 
+                    - <h:inputText value="#{clienteController.cliente.pagDigAgencia}" size="2" maxlength="10" required="true" requiredMessage="Favor informar o digíto da agencia do cliente!"/><br/> 
+                    Número da Conta: <h:inputText value="#{clienteController.cliente.pagConta}" size="5" maxlength="10" required="true" requiredMessage="Favor informar o número da conta do cliente!"/> 
+                    - <h:inputText value="#{clienteController.cliente.pagDigConta}" size="2" maxlength="10" required="true" requiredMessage="Favor informar o digíto da conta do cliente!"/><br/>
                     Tipo de Conta: <h:selectOneMenu value="#{clienteController.cliente.pagTipoConta}">
                         <f:selectItem itemLabel="Conta Corrente" itemValue="Corrente"/>
                         <f:selectItem itemLabel="Conta Poupança" itemValue="Poupança"/>
                     </h:selectOneMenu><br/>
-                    Município da Agência: <h:inputText value="#{clienteController.cliente.pagCidadeAgencia}"/><br/><br/>
-                    Patrocinador/Indicador: (Direto do user)
+                    Município da Agência: <h:inputText value="#{clienteController.cliente.pagCidadeAgencia}" maxlength="30" required="true" requiredMessage="Favor informar o municipio da conta do cliente!"/><br/><br/>
                     <br/><br/>
                     <h:commandButton action="#{clienteController.adicionarCliente()}" value="Inserir Cliente"/><br/>
                     <h:commandButton action="index" value="Voltar"/>

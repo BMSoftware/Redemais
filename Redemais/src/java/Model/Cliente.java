@@ -58,9 +58,9 @@ public class Cliente implements java.io.Serializable {
     private String foneCel;
     @Column(name = "end_rua", nullable = false, length = 60)
     private String endRua;
-    @Column(name = "end_numero", nullable = false, length = 10)
+    @Column(name = "end_numero", nullable = true, length = 10)
     private String endNumero;
-    @Column(name = "end_complemento", nullable = false, length = 45)
+    @Column(name = "end_complemento", nullable = true, length = 45)
     private String endComplemento;
     @Column(name = "end_cidade", nullable = false, length = 45)
     private String endCidade;

@@ -5,9 +5,11 @@ import Dao.CancelamentoDaoImp;
 import Model.Cancelamento;
 import Model.Venda;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -58,6 +60,11 @@ public class CancelamentoController implements Serializable {
     }
     
     public String adicionarCancelamento(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        if(!this.cancelamento.getSenha().equals("password")){
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Senha errada", ""));
+            return "cancelamento";
+        }
         CancelamentoDao dao = new CancelamentoDaoImp();
         dao.save(cancelamento);
         return "listarVenda";

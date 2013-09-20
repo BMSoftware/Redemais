@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.prime.com.tr/ui">
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Lançamento de Vendas</title>
         <link type="text/css" rel="stylesheet" href="dot-luv/skin.css"/>
@@ -24,15 +25,26 @@
                 <h1>Lançamentos de Venda</h1>
                 <h:form prependId="false">
                     <h:messages />
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="4">
                         <h:outputLabel value="Cliente: " for="cliente" />
-                        <h:inputText id="cliente" label="Cliente" value="#{vendaController.venda.idCliente}" required="true"/>
+                        <h:inputText id="cliente" label="Cliente" value="#{vendaController.venda.idCliente}" onblur="document.getElementById('botaoValidar').click();"/>
+                        <h:outputLabel value="CPF do cliente" for="cpfCliente"/>
+                        <h:inputText id="cpfCliente" value="#{vendaController.venda.cpfCliente}" onblur="document.getElementById('botaoValidar').click();"/>
+                        <h:outputLabel value="Nome Cliente: " for="nomeCliente"/>
+                        <h:inputText id="nomeCliente" value="#{vendaController.nomeTemp}" readonly="true" disabled="true" size="50"/>
+                        <h:outputText/><h:outputText/>
                         <h:outputLabel value="Valor: " for="valor" />
-                        <h:inputText id="valor" label="Valor" value="#{vendaController.venda.valor}" required="true"/>
-                        <h:outputLabel value="Confirmar Valor: " for="confirmarValor" />
-                        <h:inputText id="confirmarValor" label="ConfirmarValor" value="#{vendaController.venda.confirmaValor}" required="true" />
+                        <h:inputText id="valor" label="Valor" value="#{vendaController.venda.valor}" required="true">
+                            <f:convertNumber type="number"/>
+                        </h:inputText>
+                        <h:outputLabel value="Confirmar Valor: " for="confirmarValor"/>
+                        <h:inputText id="confirmarValor" label="ConfirmarValor" value="#{vendaController.venda.confirmaValor}" required="true">
+                            <f:convertNumber type="number"/>
+                        </h:inputText>
                         <h:outputText />
                         <h:commandButton action="#{vendaController.adicionarVenda}" value="Gravar"/>
+                        <p:commandButton id="botaoValidar" value="Validar" update="mensagem nomeCliente" ajax="true" 
+                                         action="#{vendaController.validarCliente}"  />
                     </h:panelGrid>
                 </h:form>
                 <hr/>

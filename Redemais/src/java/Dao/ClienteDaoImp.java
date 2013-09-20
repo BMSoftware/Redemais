@@ -2,10 +2,12 @@ package Dao;
 
 import Model.Cliente;
 import Utils.HibernateUtil;
-import java.sql.Date;
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -24,7 +26,23 @@ public class ClienteDaoImp implements ClienteDao {
     @Override
     public Cliente getCliente(int idCliente) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return (Cliente) session.load(Cliente.class, idCliente);
+        Transaction t = session.beginTransaction();
+        Criteria criteria = session.createCriteria(Cliente.class);
+        criteria.add(Restrictions.eq("idCliente", idCliente));
+        Cliente cliente = (Cliente) criteria.uniqueResult();
+        t.commit();
+        return cliente;
+    }
+
+    @Override
+    public Cliente getCliente(String cpfCliente) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        Criteria criteria = session.createCriteria(Cliente.class);
+        criteria.add(Restrictions.eq("cpf", cpfCliente));
+        Cliente cliente = (Cliente) criteria.uniqueResult();
+        t.commit();
+        return cliente;
     }
 
     @Override

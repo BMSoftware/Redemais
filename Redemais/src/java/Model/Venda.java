@@ -46,9 +46,12 @@ public class Venda implements java.io.Serializable {
     private char status;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "venda")
     private List<Cancelamento> cancelamentos = new ArrayList<Cancelamento>();
+    @Transient
     private int idCliente;
     @Transient
     private double confirmaValor;
+    @Transient
+    private String cpfCliente;
 
     public Venda() {
     }
@@ -67,9 +70,27 @@ public class Venda implements java.io.Serializable {
     }
 
     public void setIdCliente(int idCliente) {
-        ClienteDao dao = new ClienteDaoImp();
-        this.cliente = dao.getCliente(idCliente);
+        if (idCliente != 0) {
+            ClienteDao dao = new ClienteDaoImp();
+            if (dao.getCliente(idCliente) != null) {
+                this.cliente = dao.getCliente(idCliente);
+            }
+        }
         this.idCliente = idCliente;
+    }
+
+    public String getCpfCliente() {
+        return cpfCliente;
+    }
+
+    public void setCpfCliente(String cpfCliente) {
+        if (!cpfCliente.equals("")) {
+            ClienteDao dao = new ClienteDaoImp();
+            if (dao.getCliente(cpfCliente) != null) {
+                this.cliente = dao.getCliente(cpfCliente);
+            }
+        }
+        this.cpfCliente = cpfCliente;
     }
 
     public Integer getIdVenda() {

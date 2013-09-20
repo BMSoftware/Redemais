@@ -12,6 +12,8 @@ public interface ClienteDao {
     public void save(Cliente cliente);
 
     public Cliente getCliente(int idCliente);
+    
+    public Cliente getCliente(String cpfCliente);
 
     public List<Cliente> list();
 
