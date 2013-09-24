@@ -14,18 +14,22 @@
                 <h:form>
                     <h:outputText value="Bem vindo #{usuarioController.usuario.username}" />
                     <br/>
-                    <h:panelGrid columns="4" cellpadding="50">
-                        <h:commandLink action="#{clienteController.prepararAdicionarCliente}">
+                    <h:panelGrid columns="4" cellspacing="50">
+                        <h:outputLabel for="adicionarCliente" value="Adicionar Cliente"/>
+                        <h:outputLabel for="adicionarVenda" value="Lançar Venda"/>
+                        <h:outputLabel for="listarVenda" value="Listar Vendas"/>
+                        <h:outputLabel for="sair" value="Sair"/>
+                        <h:commandLink id="adicionarCliente" action="#{clienteController.prepararAdicionarCliente}" title="Adicionar Cliente">
                             <h:graphicImage library="imagens" name="cliente.jpg" style="border:0"/>
                         </h:commandLink>
-                        <h:commandLink action="#{vendaController.prepararAdicionarVenda}" >
+                        <h:commandLink id="adicionarVenda" action="#{vendaController.prepararAdicionarVenda}" title="Lançar Venda" >
                             <h:graphicImage library="imagens" name="venda.jpg" style="border:0"/>
                         </h:commandLink>
-                        <h:commandLink action="#{vendaController.prepararListarVenda}">
+                        <h:commandLink id="listarVenda" action="#{vendaController.prepararListarVenda}" title="Listar Vendas">
                             <h:graphicImage library="imagens" name="listaVenda.jpg" style="border:0"/>
                         </h:commandLink>
-                        <h:outputLink value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout" >
-                            <h:graphicImage library="imagens" name="sair.jpg" style="border:0"/>
+                        <h:outputLink id="sair" value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout" title="Sair">
+                            <h:graphicImage library="imagens" name="sair.png" style="border:0"/>
                         </h:outputLink>
                     </h:panelGrid>
                 </h:form>
