@@ -12,11 +12,17 @@
             <p:layoutUnit position="center" resizable="true">
                 <h1>Rede Mais</h1>
                 <h:form>
+                    <h:outputText value="Bem vindo #{usuarioController.usuario.username}" />
+                    <br/>
                     <h:commandButton value="Novo Cliente" action="#{clienteController.prepararAdicionarCliente}"/>
                     <br/>
                     <h:commandButton value="Lançar Venda" action="#{vendaController.prepararAdicionarVenda}" />
                     <br/>
                     <h:commandButton value="Listar Vendas do Dia" action="#{vendaController.prepararListarVenda}"/>
+                    <br/>
+                    <h:outputLink value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
+                        <h:outputText value="Sair"/>
+                    </h:outputLink>
                 </h:form>
             </p:layoutUnit>
         </p:layout>
