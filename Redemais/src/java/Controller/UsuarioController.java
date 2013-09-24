@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Usuario;
 import java.io.Serializable;
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.User;
  *
  * @author Bruno
  */
-@ManagedBean
+@ManagedBean(name = "usuarioController")
 @SessionScoped
 public class UsuarioController implements Serializable {
 

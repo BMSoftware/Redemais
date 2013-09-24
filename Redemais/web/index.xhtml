@@ -14,15 +14,20 @@
                 <h:form>
                     <h:outputText value="Bem vindo #{usuarioController.usuario.username}" />
                     <br/>
-                    <h:commandButton value="Novo Cliente" action="#{clienteController.prepararAdicionarCliente}"/>
-                    <br/>
-                    <h:commandButton value="Lançar Venda" action="#{vendaController.prepararAdicionarVenda}" />
-                    <br/>
-                    <h:commandButton value="Listar Vendas do Dia" action="#{vendaController.prepararListarVenda}"/>
-                    <br/>
-                    <h:outputLink value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
-                        <h:outputText value="Sair"/>
-                    </h:outputLink>
+                    <h:panelGrid columns="4" cellpadding="50">
+                        <h:commandLink action="#{clienteController.prepararAdicionarCliente}">
+                            <h:graphicImage library="imagens" name="cliente.jpg" style="border:0"/>
+                        </h:commandLink>
+                        <h:commandLink action="#{vendaController.prepararAdicionarVenda}" >
+                            <h:graphicImage library="imagens" name="venda.jpg" style="border:0"/>
+                        </h:commandLink>
+                        <h:commandLink action="#{vendaController.prepararListarVenda}">
+                            <h:graphicImage library="imagens" name="listaVenda.jpg" style="border:0"/>
+                        </h:commandLink>
+                        <h:outputLink value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout" >
+                            <h:graphicImage library="imagens" name="sair.jpg" style="border:0"/>
+                        </h:outputLink>
+                    </h:panelGrid>
                 </h:form>
             </p:layoutUnit>
         </p:layout>

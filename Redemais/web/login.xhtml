@@ -9,10 +9,10 @@
         <link type="text/css" rel="stylesheet" href="dot-luv/skin.css"/>
     </h:head>
     <h:body>
-        <p:dialog header="Login" visible="true" closable="false" draggable="false" resizable="false" width="420">
-            <center>
-                <h:outputText value="Usuário ou senha incorretos!" rendered="#{param.erro}" style="color: darkred"/>
-            </center>
+            <p:dialog header="Login" visible="true" closable="false" draggable="false" resizable="false" width="420">
+                <center>
+                    <h:outputText value="Usuário ou senha incorretos!" rendered="#{param.erro}" style="color: darkred"/>
+                </center>
                 <form action="j_spring_security_check" method="post">
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="j_username" value="Username: *" /> 
@@ -22,6 +22,6 @@
                         <h:commandButton value="Login"/>
                     </h:panelGrid>
                 </form>
-        </p:dialog>
+            </p:dialog>
     </h:body>
 </html>
