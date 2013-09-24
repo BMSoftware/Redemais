@@ -1,7 +1,11 @@
 package Model;
 
+import Dao.ClienteDao;
+import Dao.ClienteDaoImp;
 import Dao.EmpresaDao;
 import Dao.EmpresaDaoImp;
+import Dao.UsuarioDao;
+import Dao.UsuarioDaoImp;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -42,7 +47,7 @@ public class Cliente implements java.io.Serializable {
     @Column(name = "rg", nullable = false, length = 20)
     private String rg;
     @Temporal(TemporalType.DATE)
-    @Column(name="data_nascimento", length=10)
+    @Column(name = "data_nascimento", length = 10)
     private Date dataNascimento;
     @Column(name = "sexo", nullable = false)
     private String sexo;
@@ -87,6 +92,8 @@ public class Cliente implements java.io.Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
     private List<Venda> vendas = new ArrayList<Venda>();
     private int idEmpresa;
+    @Transient
+    private String usuarioNome;
 
     public Cliente() {
     }
@@ -127,6 +134,19 @@ public class Cliente implements java.io.Serializable {
         EmpresaDao empresaDao = new EmpresaDaoImp();
         this.empresa = empresaDao.getEmpresa(idEmpresa);
         this.idEmpresa = idEmpresa;
+    }
+
+    public String getUsuarioNome() {
+        return usuarioNome;
+    }
+
+    public void setUsuarioNome(String usuarioNome) {
+        System.out.println(usuarioNome);
+        UsuarioDao usuarioDao = new UsuarioDaoImp();
+        EmpresaDao empresaDao = new EmpresaDaoImp();
+        //this.empresa = empresaDao.getEmpresa(usuarioDao.getUsario(usuarioNome));
+        //this.idEmpresa = empresa.getIdEmpresa();
+        this.usuarioNome = usuarioNome;
     }
 
     public Integer getIdCliente() {

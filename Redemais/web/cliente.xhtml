@@ -88,7 +88,7 @@
                         <h:panelGrid columns="2">
                             <h3>Contatos</h3>
                             <h:outputLabel/>
-                             <h:outputLabel value="Telefone Fixo DDD" for="telFixoDDD"/>
+                            <h:outputLabel value="Telefone Fixo DDD" for="telFixoDDD"/>
                             <h:inputText id="telFixoDDD" value="#{clienteController.cliente.foneResDdd}" maxlength="2" size="1"/> 
                             <h:outputLabel value="Telefone Fixo" for="telFixo"/>
                             <h:inputText id="telFixo" value="#{clienteController.cliente.foneRes}" maxlength="8" size="8"/>
@@ -100,9 +100,10 @@
                             <h:inputText id="email" value="#{clienteController.cliente.email}" maxlength="45" size="30"/>
                         </h:panelGrid>
                     </h:panelGrid>
-                    <h:outputLabel value="Empresa: " for="empresa"/>
-                    <h:inputText id="empresa" value="#{clienteController.cliente.idEmpresa}"/>
-                    <h:commandButton action="#{clienteController.adicionarCliente()}" value="Inserir Cliente"/>
+                   Empresa <h:inputText value="#{clienteController.cliente.idEmpresa}"/>
+                    <h:commandButton action="#{clienteController.adicionarCliente()}" value="Inserir Cliente">
+                      <!--  <f:setPropertyActionListener target="#{clienteController.cliente.usuarioNome}" value="#{usuarioController.usuario.username}"/> -->
+                    </h:commandButton>
                 </h:form>
             </p:layoutUnit>
         </p:layout>

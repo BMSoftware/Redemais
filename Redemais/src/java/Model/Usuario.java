@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -22,6 +24,9 @@ public class Usuario implements Serializable {
     private boolean ativo;
     @OneToMany
     private List<Autorizacao> autorizacoes;
+    @ManyToOne
+    @JoinColumn(name = "id_empresa")
+    private Empresa empresa;
 
     public Usuario() {
     }
@@ -56,5 +61,13 @@ public class Usuario implements Serializable {
 
     public void setAutorizacoes(List<Autorizacao> autorizacoes) {
         this.autorizacoes = autorizacoes;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 }
