@@ -25,7 +25,6 @@ public class ClienteController implements Serializable {
     private Empresa empresa;
     private Cliente cliente;
     private DataModel listaClientes;
-    private String usuarioNome;
 
     public DataModel getListarClientes() {
         List<Cliente> lista = new ClienteDaoImp().list();
@@ -87,13 +86,5 @@ public class ClienteController implements Serializable {
         ClienteDao dao = new ClienteDaoImp();
         dao.update(cliente);
         return "index";
-    }
-
-    public String getUsuarioNome() {
-        return usuarioNome;
-    }
-
-    public void setUsuarioNome(String usuarioNome) {
-        this.usuarioNome = usuarioNome;
     }
 }

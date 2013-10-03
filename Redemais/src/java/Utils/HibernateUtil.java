@@ -1,8 +1,10 @@
 package Utils;
 
+import Model.Autorizacao;
 import Model.Cancelamento;
 import Model.Cliente;
 import Model.Empresa;
+import Model.Usuario;
 import Model.Venda;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
@@ -28,6 +30,8 @@ public class HibernateUtil {
                 ac.addAnnotatedClass(Cliente.class);
                 ac.addAnnotatedClass(Empresa.class);
                 ac.addAnnotatedClass(Venda.class);
+                ac.addAnnotatedClass(Usuario.class);
+                ac.addAnnotatedClass(Autorizacao.class);
                 sessionFactory = ac.configure().buildSessionFactory();
             } catch (Throwable ex) {
                 // Log the exception.

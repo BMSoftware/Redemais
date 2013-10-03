@@ -91,9 +91,7 @@ public class Cliente implements java.io.Serializable {
     private char statusCartao;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
     private List<Venda> vendas = new ArrayList<Venda>();
-    private int idEmpresa;
-    @Transient
-    private String usuarioNome;
+    
 
     public Cliente() {
     }
@@ -126,28 +124,6 @@ public class Cliente implements java.io.Serializable {
         this.statusCartao = statusCartao;
     }
 
-    public int getIdEmpresa() {
-        return idEmpresa;
-    }
-
-    public void setIdEmpresa(int idEmpresa) {
-        EmpresaDao empresaDao = new EmpresaDaoImp();
-        this.empresa = empresaDao.getEmpresa(idEmpresa);
-        this.idEmpresa = idEmpresa;
-    }
-
-    public String getUsuarioNome() {
-        return usuarioNome;
-    }
-
-    public void setUsuarioNome(String usuarioNome) {
-        System.out.println(usuarioNome);
-        UsuarioDao usuarioDao = new UsuarioDaoImp();
-        EmpresaDao empresaDao = new EmpresaDaoImp();
-        //this.empresa = empresaDao.getEmpresa(usuarioDao.getUsario(usuarioNome));
-        //this.idEmpresa = empresa.getIdEmpresa();
-        this.usuarioNome = usuarioNome;
-    }
 
     public Integer getIdCliente() {
         return idCliente;

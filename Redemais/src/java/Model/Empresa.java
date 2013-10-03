@@ -51,10 +51,12 @@ public class Empresa implements java.io.Serializable {
     private String digAgencia;
     @Column(name = "tipo_pagamento", length = 1)
     private Character tipoPagamento;
-    @Column(name = "e-mail", length = 45)
-    private String EMail;
+    @Column(name = "email", length = 45)
+    private String email;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
     private List<Cliente> clientes = new ArrayList<Cliente>();
+    @OneToMany(targetEntity = Usuario.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
+    private List<Usuario> usuarios = new ArrayList<Usuario>();
 
     public Empresa() {
     }
@@ -74,7 +76,7 @@ public class Empresa implements java.io.Serializable {
         this.agencia = agencia;
         this.digAgencia = digAgencia;
         this.tipoPagamento = tipoPagamento;
-        this.EMail = EMail;
+        this.email = EMail;
     }
 
     public Integer getIdEmpresa() {
@@ -194,11 +196,11 @@ public class Empresa implements java.io.Serializable {
     }
 
     public String getEMail() {
-        return this.EMail;
+        return this.email;
     }
 
     public void setEMail(String EMail) {
-        this.EMail = EMail;
+        this.email = EMail;
     }
 
     public List<Cliente> getClientes() {
@@ -207,5 +209,13 @@ public class Empresa implements java.io.Serializable {
 
     public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }

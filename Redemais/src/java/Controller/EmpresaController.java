@@ -1,12 +1,8 @@
 package Controller;
 
-import Dao.EmpresaDao;
-import Dao.EmpresaDaoImp;
 import Model.Empresa;
-import Model.Usuario;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 /**

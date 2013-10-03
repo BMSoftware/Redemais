@@ -100,9 +100,8 @@
                             <h:inputText id="email" value="#{clienteController.cliente.email}" maxlength="45" size="30"/>
                         </h:panelGrid>
                     </h:panelGrid>
-                   Empresa <h:inputText value="#{clienteController.cliente.idEmpresa}"/>
                     <h:commandButton action="#{clienteController.adicionarCliente()}" value="Inserir Cliente">
-                      <!--  <f:setPropertyActionListener target="#{clienteController.cliente.usuarioNome}" value="#{usuarioController.usuario.username}"/> -->
+                        <f:setPropertyActionListener target="#{clienteController.cliente.empresa}" value="#{usuarioController.usuario.empresa}"/>
                     </h:commandButton>
                 </h:form>
             </p:layoutUnit>

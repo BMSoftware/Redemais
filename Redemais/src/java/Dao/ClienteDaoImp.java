@@ -4,7 +4,6 @@ import Model.Cliente;
 import Utils.HibernateUtil;
 import java.util.List;
 import org.hibernate.Criteria;
-import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
