@@ -36,9 +36,8 @@
                             <h:outputLabel value="RG " for="rg"/>
                             <h:inputText id="rg" value="#{clienteController.cliente.rg}" maxlength="20" required="true" requiredMessage="Favor informar o RG do cliente!"/>
                             <h:outputLabel value="Data Nascimento " for="dataNascimento"/>
-                            <h:inputText id="dataNascimento" value="#{clienteController.cliente.dataNascimento}" maxlength="10" required="true" requiredMessage="Favor informar a data de nascimento do cliente!">
-                                <f:convertDateTime pattern="yyyy-MM-dd"/>
-                            </h:inputText>
+                            <p:calendar value="#{clienteController.cliente.dataNascimento}" pattern="dd/MM/yyyy" maxlength="10" size="10" showOn="button" required="true" requiredMessage="Favor informar a data de nascimento do cliente!"/>
+                            <h:outputLabel/>
                             <h:outputLabel value="Sexo" for="sexo"/>
                             <h:selectOneMenu id="sexo" value="#{clienteController.cliente.sexo}">
                                 <f:selectItem itemLabel="Feminino" itemValue="Feminino"/>

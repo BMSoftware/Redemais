@@ -34,6 +34,9 @@ public class Venda implements java.io.Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_empresa")
+    private Empresa empresa;
     @Column(name = "valor", nullable = false, precision = 22, scale = 0)
     private double valor;
     @Temporal(TemporalType.DATE)
@@ -56,13 +59,16 @@ public class Venda implements java.io.Serializable {
     public Venda() {
     }
 
-    public Venda(Cliente cliente, double valor, Date dataVenda, Date hora, char status, double confirmaValor) {
+    public Venda(Cliente cliente, Empresa empresa, double valor, Date dataVenda, Date hora, char status, int idCliente, double confirmaValor, String cpfCliente) {
         this.cliente = cliente;
+        this.empresa = empresa;
         this.valor = valor;
         this.dataVenda = dataVenda;
         this.hora = hora;
         this.status = status;
+        this.idCliente = idCliente;
         this.confirmaValor = confirmaValor;
+        this.cpfCliente = cpfCliente;
     }
 
     public int getIdCliente() {
@@ -103,6 +109,14 @@ public class Venda implements java.io.Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public double getValor() {

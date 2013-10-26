@@ -1,11 +1,5 @@
 package Model;
 
-import Dao.ClienteDao;
-import Dao.ClienteDaoImp;
-import Dao.EmpresaDao;
-import Dao.EmpresaDaoImp;
-import Dao.UsuarioDao;
-import Dao.UsuarioDaoImp;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 /**

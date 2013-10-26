@@ -5,6 +5,7 @@ import Dao.ClienteDaoImp;
 import Dao.VendaDao;
 import Dao.VendaDaoImp;
 import Model.Cliente;
+import Model.Empresa;
 import Model.Venda;
 import java.io.Serializable;
 import java.util.List;
@@ -29,6 +30,9 @@ public class VendaController implements Serializable {
     @ManagedProperty(value = "#{clienteController}")
     private ClienteController clienteBean;
     private Cliente cliente;
+    @ManagedProperty(value = "#{empresaController}")
+    private EmpresaController empresaBean;
+    private Empresa empresa;
     private Venda venda;
     private DataModel listaVendas;
     private String cfpTemp;
@@ -58,6 +62,26 @@ public class VendaController implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public EmpresaController getEmpresaBean() {
+        return empresaBean;
+    }
+
+    public void setEmpresaBean(EmpresaController empresaBean) {
+        this.empresaBean = empresaBean;
+    }
+
+    public Empresa getEmpresa() {
+        if(empresaBean != null){
+            empresa = empresaBean.getEmpresa();
+        }
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+    
 
     public Venda getVenda() {
         return venda;

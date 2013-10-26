@@ -42,7 +42,9 @@
                             <f:convertNumber type="number"/>
                         </h:inputText>
                         <h:outputText />
-                        <h:commandButton action="#{vendaController.adicionarVenda}" value="Gravar"/>
+                        <h:commandButton action="#{vendaController.adicionarVenda}" value="Gravar">
+                            <f:setPropertyActionListener target="#{vendaController.venda.empresa}" value="#{usuarioController.usuario.empresa}"/>
+                        </h:commandButton>
                         <p:commandButton id="botaoValidar" value="Validar" update="mensagem nomeCliente" ajax="true" 
                                          action="#{vendaController.validarCliente}" style="opacity: 0" />
                     </h:panelGrid>
