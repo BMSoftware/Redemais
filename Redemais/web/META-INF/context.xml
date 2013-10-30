@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/Redemais"/>
+<Context antiJARLocking="true" path="">
+    <Resource 
+        auth="Container"
+        name="jdbc/RedeMaisDB"
+        driverClassName="com.mysql.jdbc.Driver"
+        maxActive="50" 
+        maxIdle="30"
+        maxWait="-1"
+        type="javax.sql.DataSource"
+        url="jdbc:mysql://localhost/redemais_db"
+        password="root"
+        username="root"
+        validationQuery="SELECT 1"
+        testOnBorrow="true"
+        testWhileIdle="true"
+        timeBetweenEvictionRunsMillis="10000"
+        minEvictableIdleTimeMillis="60000" />
+</Context>

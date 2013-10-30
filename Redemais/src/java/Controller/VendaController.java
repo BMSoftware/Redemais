@@ -139,7 +139,7 @@ public class VendaController implements Serializable {
         setNomeTemp("");
         FacesContext context = FacesContext.getCurrentInstance();
         if (this.venda.getValor() != this.venda.getConfirmaValor()) {
-            venda = new Venda();
+            //venda = new Venda();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Os valores inseridos não são iguais", ""));
             return "venda";
         }
